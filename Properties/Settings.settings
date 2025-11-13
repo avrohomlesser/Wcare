@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ICR2.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="platform" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">rambam</Value>
+    </Setting>
+    <Setting Name="rambam_connection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=WS203\ezw1;Initial Catalog=db_nywcar;User ID=ezw3; Password=ezw3</Value>
+    </Setting>
+    <Setting Name="rambam_save_xlpath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\EZw\Reports\</Value>
+    </Setting>
+    <Setting Name="rambam_open_xlpath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">C:\Program Files\EZw\Application\</Value>
+    </Setting>
+    <Setting Name="lasante_connection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=ecw-db-b.lasantehealth.org;Initial Catalog=mobiledoc;Trusted_connection=yes</Value>
+    </Setting>
+    <Setting Name="lasante_save_xlpath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fs\SharedData\Data\Temp\</Value>
+    </Setting>
+    <Setting Name="lasante_open_xlpath" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\fs\SharedData\Data\Temp\</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
