@@ -13,7 +13,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <PublishUrl>C:\Users\Alesser\Documents\ezw\Wcare\</PublishUrl>
+    <PublishUrl>PublishOutput/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -24,10 +24,10 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://avrohomlesser.github.io/Wcare/</InstallUrl>
-    <UpdateUrl>https://avrohomlesser.github.io/Wcare/</UpdateUrl>
+    <UpdateUrl>https://github.com/avrohomlesser/Wcare/releases/latest/download/</UpdateUrl>
     <WebPage>publish.htm</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>196</ApplicationRevision>
+    <ApplicationRevision>199</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -258,4 +258,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterPublish">
+    <Exec Command="xcopy /E /Y &quot;$(PublishDir)*&quot; &quot;$(SolutionDir)docs\&quot;" />
+    <Exec Command="cd &quot;$(SolutionDir)&quot; &amp;&amp; git add docs &amp;&amp; git commit -m &quot;Auto‑publish update&quot; &amp;&amp; git push" />
+  </Target>
 </Project>
