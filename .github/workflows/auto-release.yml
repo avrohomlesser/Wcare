@@ -1,0 +1,25 @@
+name: Auto ClickOnce Release
+   on:
+     push:
+       branches:
+         - publish
+   permissions:
+     contents: write
+   jobs:
+     release:
+       runs-on: ubuntu-latest
+       steps:
+         - name: Check out repository
+           uses: actions/checkout@v4
+         - name: Create GitHub Release
+           uses: softprops/action-gh-release@v2
+           with:
+             tag_name: v${{ github.run_number }}
+             name: "ECW Data Manager v${{ github.run_number }}"
+             body: "Automated ClickOnce release build ${{ github.run_number }}"
+             files: |
+               PublishOutput/**/*.application
+               PublishOutput/**/Application Files/**
+               PublishOutput/**/setup.exe
+           env:
+             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
