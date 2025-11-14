@@ -2,6 +2,12 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
+# Do not change line endings on ClickOnce output
+*.application binary
+*.manifest binary
+*.deploy binary
+*.exe binary
+*.dll binary
 
 ###############################################################################
 # Set default behavior for command prompt diff.
