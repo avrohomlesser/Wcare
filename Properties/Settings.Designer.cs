@@ -34,7 +34,7 @@ namespace ICR2.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WS203\\ezw1;Initial Catalog=db_nywcar;User ID=ezw3; Password=ezw3")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=WS203\\ezw1,1432;Initial Catalog=db_nywcar;User ID=ezw3;Password=ezw3")]
         public string rambam_connection {
             get {
                 return ((string)(this["rambam_connection"]));

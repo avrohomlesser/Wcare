@@ -6,7 +6,7 @@
       <Value Profile="(Default)">rambam</Value>
     </Setting>
     <Setting Name="rambam_connection" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=WS203\ezw1;Initial Catalog=db_nywcar;User ID=ezw3; Password=ezw3</Value>
+      <Value Profile="(Default)">Data Source=WS203\ezw1,1432;Initial Catalog=db_nywcar;User ID=ezw3;Password=ezw3</Value>
     </Setting>
     <Setting Name="rambam_save_xlpath" Type="System.String" Scope="Application">
       <Value Profile="(Default)">C:\Program Files\EZw\Reports\</Value>

@@ -132,19 +132,26 @@ left join users u on e.patientid = u.uid
             colFilter = new List<object>[100];
             colItemSelected = new List<int>[100];
             tempList = new List<int>();
-            if (ICR2.Properties.Settings.Default.platform.ToString() == "lasante")
-            {
 
-                connectionString = ICR2.Properties.Settings.Default.lasante_connection;
-                xlOpenPath = ICR2.Properties.Settings.Default.lasante_open_xlpath;
-                xlSavePath = ICR2.Properties.Settings.Default.lasante_save_xlpath;
-            }
-            else
-            {
+            if (!System.Security.Principal.WindowsIdentity.GetCurrent().Name.Contains("LASANTE\\")){
                 connectionString = ICR2.Properties.Settings.Default.rambam_connection;
                 xlOpenPath = ICR2.Properties.Settings.Default.rambam_open_xlpath;
                 xlSavePath = ICR2.Properties.Settings.Default.rambam_save_xlpath;
             }
+
+            //if (ICR2.Properties.Settings.Default.platform.ToString() == "lasante")
+            //{
+
+            //    connectionString = ICR2.Properties.Settings.Default.lasante_connection;
+            //    xlOpenPath = ICR2.Properties.Settings.Default.lasante_open_xlpath;
+            //    xlSavePath = ICR2.Properties.Settings.Default.lasante_save_xlpath;
+            //}
+            //else
+            //{
+            //    connectionString = ICR2.Properties.Settings.Default.rambam_connection;
+            //    xlOpenPath = ICR2.Properties.Settings.Default.rambam_open_xlpath;
+            //    xlSavePath = ICR2.Properties.Settings.Default.rambam_save_xlpath;
+            //}
 
 
         }
