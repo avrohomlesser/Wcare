@@ -1,0 +1,31 @@
+name: Build .NET Framework 4.8 App
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # MSBuild comes preinstalled on windows-latest
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Build and publish WCare
+        run: |
+          msbuild WCare.csproj `
+            /p:Configuration=Release `
+            /t:Publish `
+            /p:PublishDir="PublishOutput"
+
+      - name: Upload Publish folder
+        uses: actions/upload-artifact@v4
+        with:
+          name: WCare-Publish
+          path: PublishOutput
