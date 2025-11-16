@@ -1,4 +1,4 @@
-name: Build .NET Framework 4.8 App
+name: Build and Publish .NET Framework 4.8
 
 on:
   push:
@@ -10,22 +10,25 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      # MSBuild comes preinstalled on windows-latest
+      # Enables MSBuild in PATH
       - name: Setup MSBuild
         uses: microsoft/setup-msbuild@v2
 
-      - name: Build and publish WCare
+      - name: Restore NuGet packages
+        run: nuget restore WCare.sln
+
+      - name: Build and publish
         run: |
           msbuild WCare.csproj `
             /p:Configuration=Release `
             /t:Publish `
             /p:PublishDir="PublishOutput"
 
-      - name: Upload Publish folder
+      - name: Upload PublishOutput
         uses: actions/upload-artifact@v4
         with:
-          name: WCare-Publish
+          name: WCare_Publish
           path: PublishOutput
