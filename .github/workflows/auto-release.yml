@@ -11,17 +11,19 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Check out repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+
+      - name: Build project
+        run: dotnet publish -c Release -o PublishOutput
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
           tag_name: v${{ github.run_number }}
           name: "ECW Data Manager v${{ github.run_number }}"
-          body: "Automated ClickOnce release build ${{ github.run_number }}"
+          body: "Automated release build ${{ github.run_number }}"
+          generate_release_notes: true
           files: |
             PublishOutput/**/*.application
             PublishOutput/**/Application Files/**
