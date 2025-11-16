@@ -29,7 +29,7 @@ jobs:
 
       - name: Build and publish project
         run: |
-          msbuild WCare\WCare.csproj /p:Configuration=Release /t:Publish /p:PublishDir="PublishOutput"
+          msbuild WCare.csproj /p:Configuration=Release /t:Publish /p:PublishDir="PublishOutput"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
