@@ -1,0 +1,46 @@
+name: Auto ClickOnce Release (Windows)
+
+on:
+  push:
+    branches:
+      - publish   # triggers when you push to the “publish” branch
+
+permissions:
+  contents: write   # needed to create releases
+
+jobs:
+  release:
+    runs-on: windows-latest   # <<< key change for .NET Framework builds
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.3
+        with:
+          vs-version: '[17.0,)'    # Ensures Visual Studio 2022 build tools
+
+      - name: Setup NuGet
+        uses: NuGet/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore WCare.sln
+
+      - name: Build and publish project
+        run: |
+          msbuild WCare\WCare.csproj /p:Configuration=Release /t:Publish /p:PublishDir="PublishOutput"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: "ECW Data Manager v${{ github.run_number }}"
+          body: "Automated release build ${{ github.run_number }}"
+          generate_release_notes: true
+          files: |
+            PublishOutput/**/*.application
+            PublishOutput/**/Application Files/**
+            PublishOutput/**/setup.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
